@@ -11,32 +11,24 @@
     <title>Hello, world!</title>
   </head>
   <body>
-    <form method="POST" action="<?php echo site_url("Tareas/modificar") ?>" class="w-50 mt-5 mx-auto">
+    <form method="POST" action="<?php echo site_url("Usuarios/modificar") ?>" class="w-50 mt-5 mx-auto">
         <div class="form-group">
             <label for="id">Id</label>
-            <input type="number" class="form-control" id="id" name="id" value="<?php echo $tarea["id_tarea"]?>" readonly>
+            <input type="number" class="form-control" id="id" name="id" value="<?php echo $usuario["id_usuario"]?>" readonly>
         </div>
         <div class="form-group">
             <label for="nombre">Nombre</label>
-            <input type="text" class="form-control" id="nombre" name="nombre" value="<?php echo $tarea["nombre"]?>" Required>
+            <input type="text" class="form-control" id="nombre" name="nombre" value="<?php echo $usuario["nombre"]?>" Required>
         </div>
         <div class="form-group">
-            <label for="descripcion">Descripcion</label>
-            <input type="text" class="form-control" id="descripcion" name="descripcion" value="<?php echo $tarea["descripcion"]?>" Required>
+            <label for="password">Password</label>
+            <input type="text" class="form-control" id="password" name="password" value="<?php echo $usuario["password"]?>" Required>
         </div>
         <div class="form-group">
-        <label for="estado">Estado</label>
-        <input type="text" class="form-control" id="estado" name="estado" value="<?php 
-            if ($tarea["estado"] == "1") {
-                echo "Activa";
-            } else if ($tarea["estado"] == "0") {
-                echo "Terminada";
-            } else {
-                echo "Completada";
-            } 
-        ?>" readonly>
-    </div>
-        <button type="submit" class="btn btn-primary">Modificar</button>
+            <label for="estado">Estado</label>
+            <input type="text" class="form-control" id="estado" name="estado" value="<?php if($usuario["estado"] == 1) echo "Activo"; else echo "Inactivo";?>" readonly>
+        </div>
+        <button type="submit" class="btn btn-primary">Modificar Usuario</button>
     </form>
 
     <!-- Optional JavaScript -->

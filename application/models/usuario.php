@@ -44,6 +44,13 @@
             }
             $this->db->update($this->tabla);
         }
+
+        public function get_by_id($id){
+            $this->db->select("*");
+            $this->db->where("id_usuario", $id);
+            $this->db->limit(1);
+            return $this->db->get($this->tabla)->row_array();
+        }
     }
 
 ?>
