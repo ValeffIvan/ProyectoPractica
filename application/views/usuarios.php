@@ -12,8 +12,8 @@
   </head>
   <body>
     <a href="Login" class="btn btn-primary">Cerrar sesion</a>
-    <a href="Usuarios?si=<?php echo "1" ?>" class="btn btn-primary">Lista de usuarios</a>
-    <a href="Tareas" class="btn btn-primary">Crear Tarea</a>
+    <a href="Inicio" class="btn btn-primary">Ver Tareas</a>
+    <a href="Usuarios" class="btn btn-primary">Crear Usuario</a>
     <br>
     <br>
     <table class="table">
@@ -21,7 +21,7 @@
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Nombre</th>
-                <th scope="col">Descripcion</th>
+                <th scope="col">Password</th>
                 <th scope="col">Estado</th>
                 <th scope="col"></th>
                 <th scope="col"></th>
@@ -29,15 +29,15 @@
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($lista as $d) { ?>
+            <?php foreach ($usuarios as $d) { ?>
             <tr>
-                <th scope="row"><?php echo $d["id_tarea"]; ?></th>
+                <th scope="row"><?php echo $d["id_usuario"]; ?></th>
                 <td><?php echo $d["nombre"]; ?></td>
-                <td><?php echo $d["descripcion"]; ?></td>
-                <td><?php if($d["estado"]=="1") echo "Activo"; else  if($d["estado"]=="2") echo "Completado"; else if($d["estado"]=="0") echo "Terminada"; ?></td>
-                <td><a href="<?php echo site_url("Tareas/cambiarEstado/").$d["id_tarea"]."/".$d["estado"]; ?>" class="btn btn-primary">Cambiar estado</a></td>
-                <td><a href="<?php echo site_url("Tareas?id=").$d["id_tarea"]; ?>" class="btn btn-primary">Modificar</a></td>
-                <td><a href="<?php echo site_url("Inicio/eliminar/".$d["id_tarea"]);?>" class="btn btn-primary">Eliminar</a></td>
+                <td><?php echo $d["password"]; ?></td>
+                <td><?php if($d["estado"]=="1") echo "Activo"; else if($d["estado"]=="0") echo "Inactivo"; ?></td>
+                <td><a href="<?php echo site_url("Usuarios/cambiarEstado/").$d["id_usuario"]."/".$d["estado"]; ?>" class="btn btn-primary">Cambiar estado</a></td>
+                <td><a href="<?php echo site_url("Usuarios?id=").$d["id_usuario"]; ?>" class="btn btn-primary">Modificar</a></td>
+                <td><a href="<?php echo site_url("Usuarios/eliminar/".$d["id_usuario"]);?>" class="btn btn-primary">Eliminar</a></td>
             </tr>
             <?php } ?>
         </tbody>

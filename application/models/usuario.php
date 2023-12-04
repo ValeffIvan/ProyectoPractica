@@ -20,11 +20,30 @@
             $this->db->insert($this->tabla, $data);
         }
 
+        public function get(){
+            $this->db->select("*");
+            return $this->db->get($this->tabla)->result_array();
+        }
+
+        public function update($id, $data){
+            $this->db->where("id_usuario", $id);
+            $this->db->update($this->tabla, $data);
+        }
+
         public function delete($id){
-            $this->db->where("id", $id);
+            $this->db->where("id_usuario", $id);
             $this->db->delete($this->tabla);
         }
-        
+
+        public function changeState($id, $state){
+            $this->db->where("id_usuario", $id);
+            if ($state== 1){
+                $this->db->set("estado",0);
+            }else{
+                $this->db->set("estado",1);
+            }
+            $this->db->update($this->tabla);
+        }
     }
 
 ?>

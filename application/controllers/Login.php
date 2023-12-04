@@ -20,7 +20,8 @@
                 $this->session->set_userdata('usuario',$nombre);
                 redirect('Inicio');
             }else{
-                redirect('Login');
+                echo "<script>alert('Nombre o contrasenia incorrectos');</script>";
+                redirect('Login','refresh');
             }
         }
 
